@@ -1,10 +1,76 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Bahga</title>
-</head>
-<body>
-  <h1>Welcome to Bahga Website!</h1>
-  <p>This is your first free website hosted on GitHub Pages.</p>
-</body>
-</html>
+// app/page.tsx
+import Image from "next/image";
+
+export default function BahgaLanding() {
+  return (
+    <main className="flex flex-col items-center bg-white text-gray-800">
+      {/* NAVBAR */}
+      <nav className="w-full flex justify-between items-center px-8 py-6 border-b border-gray-200">
+        <h1 className="text-3xl font-[Great_Vibes] text-black">
+          Bahga<span className="text-pink-600"> ✨</span>
+        </h1>
+        <div className="space-x-6 hidden md:flex">
+          <a href="#about" className="hover:text-pink-600">من نحن</a>
+          <a href="#work" className="hover:text-pink-600">الأعمال</a>
+          <a href="#contact" className="hover:text-pink-600">تواصل</a>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="text-center py-24 px-6">
+        <h2 className="text-5xl font-[Great_Vibes] text-black mb-3">
+          Bahga Bond
+        </h2>
+        <p className="text-xl italic text-gray-700">
+          Creative Photography & Makeup Team 💄📸
+        </p>
+        <p className="text-gray-600 mt-3 max-w-xl mx-auto leading-relaxed">
+          بنقدّم لمسة مختلفة في كل لحظة، لأن الجمال مش صدفة —
+          <br />
+          it’s our art and passion ✨
+        </p>
+        <button className="mt-6 bg-pink-600 text-white font-semibold py-3 px-6 rounded-full hover:scale-105 transition">
+          تواصلي معنا
+        </button>
+      </section>
+
+      {/* WORK SHOWCASE */}
+      <section id="work" className="py-16 bg-gray-50 w-full text-center">
+        <h3 className="text-3xl font-[Great_Vibes] text-pink-700 mb-10">
+          Our Work
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-8">
+          {["photo1.jpg", "photo2.jpg", "photo3.jpg"].map((src, i) => (
+            <div
+              key={i}
+              className="overflow-hidden rounded-lg shadow hover:scale-105 transition duration-300"
+            >
+              <Image
+                src={`/images/${src}`}
+                alt="Bahga work sample"
+                width={400}
+                height={400}
+                className="object-cover w-full h-80 grayscale hover:grayscale-0"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-20 px-8 max-w-3xl text-center">
+        <h3 className="text-3xl font-bold text-pink-700 mb-4">قصتنا</h3>
+        <p className="text-gray-600 leading-7">
+          بهجة فريق متكامل من المصورين وخبراء المكياج.  
+          هدفنا نخلق تجربة تصوير مليئة بالإبداع والمشاعر.  
+          كل صورة نحكي بيها قصة جمال فريدة — بهجة بكل تفاصليها 🌸
+        </p>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-8 text-gray-500 border-t border-gray-200 text-center">
+        © 2025 Bahga | Every photo tells a story ✨
+      </footer>
+    </main>
+  );
+}
